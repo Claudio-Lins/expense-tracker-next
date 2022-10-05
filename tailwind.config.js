@@ -5,12 +5,20 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      Inter: ["Inter", "sans-serif"],
+    },
+    extend: {
+      colors: {
+        texto: "#5e6066",
+        income: "#7f60f3",
+        outcome: "#f36060",
+        sidebar: "#f5f5f5",
+      },
+    },
   },
   corePlugins: {
     aspectRatio: false,
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
-}
+  plugins: [require("@tailwindcss/forms")],
+};

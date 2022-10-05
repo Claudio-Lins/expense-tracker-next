@@ -5,14 +5,15 @@
 * {
   scroll-behavior: smooth;
 }
+html {
+  font-size: 62.5%;
+}
 
 body {
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  min-height: 100vh;
 }
 
 button {
@@ -22,5 +23,27 @@ button {
 [disabled] {
   cursor: not-allowed;
   opacity: 0.6;
-  
+}
+
+h1,
+.h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: black;
+}
+
+h2,
+.h2 {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: black;
+}
+
+.liMenu {
+  @apply relative cursor-pointer px-6 py-8 text-left text-[1.4rem] font-bold text-texto hover:bg-income hover:bg-opacity-10 hover:text-income hover:before:absolute hover:before:inset-0 hover:before:block hover:before:h-[100%] hover:before:w-1 hover:before:bg-income hover:before:content-[''];
+}
+@layer utilities {
+  .clip-menu-card {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
 }
