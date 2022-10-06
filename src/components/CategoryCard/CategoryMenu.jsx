@@ -1,17 +1,10 @@
-import { useEffect, useRef } from "react";
-import CardMenu  from "../UI/CardMenu";
 
-export function CategoryMenu({ toggleMenuHandler }) {
-  const menuRef = useRef();
-  useEffect(() => {
-    const clickHandler = (e) => {
-      if (!menuRef.current.contains(e.target)) toggleMenuHandler();
-    };
-    document.addEventListener("mousedown", clickHandler);
-    return () => {
-      document.removeEventListener("mousedown", clickHandler);
-    };
-  }, []);
+import CardMenu  from "../UI/CardMenu";
+import useCloseMenu from '../../hooks/useCloseMenu';
+
+const  CategoryMenu = ({ toggleMenuHandler }) => {
+  
+  const menuRef = useCloseMenu(toggleMenuHandler);
 
   return (
     <CardMenu ref={menuRef}>
@@ -22,3 +15,5 @@ export function CategoryMenu({ toggleMenuHandler }) {
     </CardMenu>
   );
 }
+
+export default CategoryMenu;

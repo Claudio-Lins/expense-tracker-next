@@ -1,6 +1,6 @@
 import { PencilSimpleLine } from "phosphor-react";
 import useGetCurrency from "../../hooks/useGetCurrency";
-import { CategoryMenu } from "./CategoryMenu";
+import  CategoryMenu  from "./CategoryMenu";
 import useMenu  from "../../hooks/useMenu";
 
 export function CategoryCard({ title, amount, percentage }) {
