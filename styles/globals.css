@@ -39,11 +39,7 @@ h2,
   color: black;
 }
 
+
 .liMenu {
   @apply relative cursor-pointer px-6 py-8 text-left text-[1.4rem] font-bold text-texto hover:bg-income hover:bg-opacity-10 hover:text-income hover:before:absolute hover:before:inset-0 hover:before:block hover:before:h-[100%] hover:before:w-1 hover:before:bg-income hover:before:content-[''];
-}
-@layer utilities {
-  .clip-menu-card {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  }
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { CategoryCard } from "./CategoryCard";
 import { NoCard } from "./NoCard";
+import Modal  from "../UI/Modal";
+import { AddAmout } from "../CategoryCard/modais/AddAmout";
 
 const DUMMY_DATA = [
   {
@@ -28,17 +30,20 @@ export function AllCards() {
     <CategoryCard key={category.id} {...category} />
   ));
   return (
-    <section
-      id="section"
-      className="mb-24"
-      style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(30rem, 1fr))",
-        gridGap: "2rem",
-        display: "grid",
-      }}
-    >
-      {cards}
-      <NoCard />
-    </section>
+    <>
+    <AddAmout />
+      <section
+        id="section"
+        className="mb-24"
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(30rem, 1fr))",
+          gridGap: "2rem",
+          display: "grid",
+        }}
+      >
+        {cards}
+        <NoCard />
+      </section>
+    </>
   );
 }
