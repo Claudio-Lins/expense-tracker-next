@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {Header} from "../components/Header";
+import {Header} from "../components/Header/Header";
 import {AllCards} from "../components/CategoryCard/AllCards";
 
 const Home = () => {
