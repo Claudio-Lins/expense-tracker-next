@@ -1,12 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Modal from "../../UI/Modal";
+import { useDispatch } from "react-redux";
+import { toggleAddAmount } from "../../../store/ui-slice";
 
 export function AddAmout() {
+  const { isVisible } = useSelector((state) => state.ui.addAmount);
+  const dispatch = useDispatch();
+
   return (
     <Modal
-      isOpen={true}
+      isOpen={isVisible}
       onClose={() => {
-        !isOpen;
+        dispatch(toggleAddAmount(null));
       }}
       title="Add Amount"
     >
@@ -37,7 +43,7 @@ export function AddAmout() {
         </div>
         <div className="">
           <button
-            className="mt-6 flex gap-4 self-center rounded-lg bg-income px-20 text-3xl py-4 text-white hover:bg-opacity-70 hover:font-bold"
+            className="mt-6 flex gap-4 self-center rounded-lg bg-income px-20 py-4 text-3xl text-white hover:bg-opacity-70 hover:font-bold"
             type="submit"
           >
             Adicionar
