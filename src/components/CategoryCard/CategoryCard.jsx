@@ -3,7 +3,8 @@ import useGetCurrency from "../../hooks/useGetCurrency";
 import  CategoryMenu  from "./CategoryMenu";
 import useMenu  from "../../hooks/useMenu";
 
-export function CategoryCard({ title, amount, percentage }) {
+export function CategoryCard({ data }) {
+  const { title, amount, percentage } = data;
   const [ isVisble, toggleMenuHandler ] = useMenu()
   const formatAmount = useGetCurrency(amount);
 
@@ -16,12 +17,12 @@ export function CategoryCard({ title, amount, percentage }) {
             color="#000"
             onClick={toggleMenuHandler}
           />
-          {isVisble && <CategoryMenu toggleMenuHandler={toggleMenuHandler} />}
+          {isVisble && <CategoryMenu toggleMenuHandler={toggleMenuHandler} data={data}/>}
         </div>
         <h2 className="mb-4 text-xl font-light uppercase text-texto">{title}</h2>
         <h3 className="mb-12 text-4xl font-normal text-black">{formatAmount}</h3>
         <h4 className="text-right text-lg font-light text-texto">
-          {percentage}
+          {percentage}%
         </h4>
       </div>
     </div> );

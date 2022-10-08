@@ -1,20 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSubtractAmount } from "../../../store/ui-slice";
 import Modal from "../../UI/Modal";
-import { useDispatch } from "react-redux";
-import { toggleAddAmount } from "../../../store/ui-slice";
 
-export function AddAmout() {
-  const { isVisible, category } = useSelector((state) => state.ui.addAmount);
+export function SubtractAmout() {
+  const { isVisible, category } = useSelector((state) => state.ui.subtractAmount);
   const dispatch = useDispatch();
 
   return (
     <Modal
       isOpen={isVisible}
       onClose={() => {
-        dispatch(toggleAddAmount(null));
+        dispatch(toggleSubtractAmount(null));
       }}
-      title="Add Amount"
+      title="Descontar"
     >
       <form className="flex w-full flex-col items-center justify-between gap-3">
         <div className="flex w-full items-center justify-between">
@@ -26,7 +25,7 @@ export function AddAmout() {
             type="text"
             name="title"
             id="title"
-            placeholder="Ex: Venda do teclado"
+            placeholder="Ex: Gasolina do carro"
           />
         </div>
         <div className="flex w-full items-center justify-between">
@@ -46,7 +45,7 @@ export function AddAmout() {
             className="mt-6 flex gap-4 self-center rounded-lg bg-income px-20 py-4 text-3xl text-white hover:bg-opacity-70 hover:font-bold"
             type="submit"
           >
-            Adicionar
+            Descontar
           </button>
         </div>
       </form>
