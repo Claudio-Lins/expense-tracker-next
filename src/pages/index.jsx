@@ -1,8 +1,14 @@
 import Head from "next/head";
 import {Header} from "../components/Header/Header";
 import {AllCards} from "../components/CategoryCard/AllCards";
+import { useDispatch } from "react-redux";
+import { setCategories } from "../store/app-slice";
+import useGetDocs from "../hooks/useGetDocs";
+
 
 const Home = () => {
+  const dispatch = useDispatch();
+  dispatch(setCategories(useGetDocs('categorias')))
   return (
     <main id="main" className="max-w-[144rem] px-4 my-[3.5rem] mx-auto">
       <Head>

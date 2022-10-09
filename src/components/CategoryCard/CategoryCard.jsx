@@ -22,7 +22,7 @@ export function CategoryCard({ data }) {
         <h2 className="mb-4 text-xl font-light uppercase text-texto">{title}</h2>
         <h3 className="mb-12 text-4xl font-normal text-black">{formatAmount}</h3>
         <h4 className="text-right text-lg font-light text-texto">
-          {percentage}%
+          Alocado: {percentage}%
         </h4>
       </div>
     </div> );

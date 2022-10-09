@@ -1,9 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSubtractAmount } from "../../../store/ui-slice";
 import Modal from "../../UI/Modal";
 
 export function SubtractAmout() {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState(0);
   const { isVisible, category } = useSelector((state) => state.ui.subtractAmount);
   const dispatch = useDispatch();
 

@@ -1,12 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import Modal from "../../UI/Modal";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useUpdateDoc from "../../../hooks/useUpdateDoc";
 import { toggleAddAmount } from "../../../store/ui-slice";
+import Modal from "../../UI/Modal";
 
 export function AddAmout() {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState(0);
+
   const { isVisible, category } = useSelector((state) => state.ui.addAmount);
   const dispatch = useDispatch();
+
+  const addAmountHandler = useUpdateDoc();
+
+  const addAmount = (e) => {
+    e.preventDefault()
+
+    if (!title || !amount) return;
+
+    addAmountHandler("categorias", category.id, {
+      amount: category.amount + Number(amount),
+    })
+
+    setTitle("");
+    setAmount(0);
+    dispatch(toggleAddAmount(null));
+  }
 
   return (
     <Modal
@@ -16,7 +35,7 @@ export function AddAmout() {
       }}
       title="Add Amount"
     >
-      <form className="flex w-full flex-col items-center justify-between gap-3">
+      <form onSubmit={addAmount} className="flex w-full flex-col items-center justify-between gap-3">
         <div className="flex w-full items-center justify-between">
           <label className="text-[1.6rem] text-texto" htmlFor="title">
             Título
@@ -27,6 +46,7 @@ export function AddAmout() {
             name="title"
             id="title"
             placeholder="Ex: Venda do teclado"
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="flex w-full items-center justify-between">
@@ -35,10 +55,11 @@ export function AddAmout() {
           </label>
           <input
             className="w-[80%] rounded-lg border border-texto py-3 px-4 text-texto outline-none placeholder:font-light placeholder:text-income placeholder:opacity-50"
-            type="number"
+            type="text"
             name="amount"
             id="amount"
             placeholder="Ex: 1000.00"
+            onChange={(e) => setAmount(e.target.value)}
           />
         </div>
         <div className="">
